@@ -100,3 +100,13 @@ unsigned char Rotary::process() {
   // Return emit bits, ie the generated event.
   return state & 0x30;
 }
+
+
+unsigned char Rotary::process(unsigned char pin1State, unsigned char pin2State) {
+  // Grab state of input pins.
+  unsigned char pinstate = ((inverter ^ pin2State << 1) | (inverter ^ pin1State));
+  // Determine new state from the pins and state table.
+  state = ttable[state & 0xf][pinstate];
+  // Return emit bits, ie the generated event.
+  return state & 0x30;
+}

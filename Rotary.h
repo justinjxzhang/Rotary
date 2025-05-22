@@ -23,6 +23,7 @@ class Rotary
   public:
     Rotary(char, char);
     unsigned char process();
+    unsigned char process(unsigned char pin1State, unsigned char pin2State);
     void begin(bool internalPullup=true, bool flipLogicForPulldown=false);
   
     inline unsigned char pin_1() const { return pin1; }
