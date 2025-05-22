@@ -20,20 +20,15 @@
 
 class Rotary
 {
-  public:
-    Rotary(char, char);
-    unsigned char process();
-    unsigned char process(unsigned char pin1State, unsigned char pin2State);
-    void begin(bool internalPullup=true, bool flipLogicForPulldown=false);
-  
-    inline unsigned char pin_1() const { return pin1; }
-    inline unsigned char pin_2() const { return pin2; }
-  private:
-    unsigned char state;
-    unsigned char pin1;
-    unsigned char pin2;
-    unsigned char inverter;
+public:
+  Rotary(bool useHalfStepTable = false, bool flipLogicForPulldown = false);
+
+  unsigned char process(unsigned char pin1State, unsigned char pin2State);
+
+private:
+  unsigned char state;
+  unsigned char inverter;
+  bool halfStep;
 };
 
 #endif
- 
